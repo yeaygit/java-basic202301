@@ -1,8 +1,10 @@
 package org.example.inherit;
 
 import org.example.basic.Dancer;
+import org.example.basic.Rapper;
+import org.example.basic.Singer;
 
-public class IdolDancer extends Dancer {
+public class IdolDancer extends Dancer implements Singer, Rapper {
 
     private int numberOfFan;//팬의 수
 
@@ -20,14 +22,23 @@ public class IdolDancer extends Dancer {
     //오버라이딩: 부모의 메서드를 재정의
     //부모의 메서드 시그니처(이름,리턴타입,파라미터)를 똑같이 맞춰야함
 
-    @Override //오버라이딩 된건지 확인해주는 용도
+    //@Override //오버라이딩 된건지 확인해주는 용도
     public void dance(){
-        super.dance();
         wink();
     }
 
     private void wink(){
 
         System.out.println("윙크를 세게 갈깁니다.");
+    }
+
+    @Override
+    public void sing() {
+
+    }
+
+    @Override
+    public void rap() {
+
     }
 }

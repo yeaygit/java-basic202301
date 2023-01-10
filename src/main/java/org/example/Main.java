@@ -21,11 +21,12 @@ public class Main {
         System.out.println();
         streetDancer.dance();
          */
-        Dancer idolDancer1=new IdolDancer("아이돌팀1","아이돌1");
+
+        IdolDancer idolDancer1=new IdolDancer("아이돌팀1","아이돌1");
         Dancer idolDancer2=new IdolDancer("아이돌팀2","아이돌2");
         Dancer idolDancer3=new IdolDancer("아이돌팀3","아이돌3");
 
-        Dancer streetDancer1= new StreetDancer("스트릿팀1","스트릿댄서1");
+        StreetDancer streetDancer1= new StreetDancer("스트릿팀1","스트릿댄서1");
         Dancer streetDancer2= new StreetDancer("스트릿팀2","스트릿댄서2");
         Dancer streetDancer3= new StreetDancer("스트릿팀3","스트릿댄서3");
 
@@ -35,5 +36,20 @@ public class Main {
         team.joinDancer(streetDancer3);
         team.joinDancer(idolDancer2);
         team.joinDancer(streetDancer1);
+
+
+        System.out.println();
+        team.groupDance();
+
+        System.out.println();
+
+        idolDancer1.sing();
+        idolDancer1.rap();
+
+        System.out.println();
+
+        streetDancer1.rap();
+
+
     }
 }
