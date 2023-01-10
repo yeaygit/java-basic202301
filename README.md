@@ -22,3 +22,7 @@
 4. Git바로 연결 
 - VCS에서 연결
 
+5. JAVA
+- final 상태불변값 -> 초기화값 필요 --> 생성자
+- 마법의 단축키: alt + enter (ctrl+space)
+- 생성자에 마우스 두고 ctrl+alt+v 하면 타입과 생성자 자동생성
