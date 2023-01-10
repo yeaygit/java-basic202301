@@ -59,4 +59,11 @@ public class Dancer extends Object{
         System.out.println(myName+"님이 춤을 춥니다.");
     }
 
+    public String getCrewName() {
+        return crewName;
+    }
+
+    public String getMyName() {
+        return myName;
+    }
 }
