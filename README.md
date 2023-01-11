@@ -37,5 +37,6 @@
 
 #### 230111
 1. java beans - getter,setter, hash값 출력이 아닌 toString override해서 변경
+2. lambda
 
 

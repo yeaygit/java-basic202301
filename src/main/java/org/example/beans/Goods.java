@@ -61,4 +61,7 @@ public class Goods {
         return Objects.hash(goodsId, goodsName, price);
     }
     //equals와 hash는 한 쌍임 둘다 맞춰줘야지 똑같아 짐
+
+
+
 }
