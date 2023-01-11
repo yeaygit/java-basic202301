@@ -1,5 +1,7 @@
 # 자바 프로젝트 기본 설정
 
+#### 230110
+
 1. 플러그인 설치
 - file -> settings
 - 왼쪽 plugins 선택
@@ -30,3 +32,10 @@
 - 다형성
 - 추상화
 - 인터페이스
+
+
+
+#### 230111
+1. java beans - getter,setter, hash값 출력이 아닌 toString override해서 변경
+
+
