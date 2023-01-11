@@ -1,10 +1,11 @@
 package org.example.java8.lambda;
 
+import lombok.*;
+
 import java.util.List;
 
 import static org.example.java8.lambda.Color.*;
-import static org.example.java8.lambda.FilteringApple.filter;
-import static org.example.java8.lambda.FilteringApple.filterApples;
+import static org.example.java8.lambda.FilteringApple.*;
 
 public class Main {
 
@@ -19,24 +20,24 @@ public class Main {
     public static void main(String[] args) {
         //사과바구니 생성
         List<Apple> appleList = List.of(
-                new Apple(80,Color.GREEN),
-                new Apple(155,Color.GREEN),
+                new Apple(80, GREEN),
+                new Apple(155, GREEN),
                 new Apple(120, RED),
                 new Apple(97, RED),
-                new Apple(200,Color.GREEN),
+                new Apple(200, GREEN),
                 new Apple(50, RED),
-                new Apple(57,Color.YELLOW),
-                new Apple(89,Color.YELLOW)
+                new Apple(57, YELLOW),
+                new Apple(89, YELLOW)
 
         );
-        List<Apple> greenApples=FilteringApple.filterGreenApples(appleList);
+        List<Apple> greenApples= filterGreenApples(appleList);
         System.out.println("====== 녹색사과 필터링 ++++++");
         for (Apple greenApple : greenApples) {
             System.out.println(greenApple);
         }
 
         System.out.println("===== 원하는 색 사과 필터링 =====");
-        List<Apple> wantedColorApples = FilteringApple.filterApplesByColor(appleList,GREEN);
+        List<Apple> wantedColorApples = filterApplesByColor(appleList,GREEN);
         for (Apple wantedColorApple : wantedColorApples) {
             System.out.println(wantedColorApple);
         }
@@ -100,5 +101,40 @@ public class Main {
         // generic을 integer 형태로 선언
         List<Integer> evenNumbers=filter(numbers,n->n%2==0);
         System.out.println(evenNumbers);
+
+        // 사과 리스트에서 사과의 색상만 추출하여 새로운 색상 리스트를 반환
+
+        List<Color> colorList = map(appleList, Apple::getColor);
+        System.out.println("colorList = " + colorList);
+
+        List<Integer> weightList = map(appleList, Apple::getWeight);
+        System.out.println("weightList = " + weightList);
+
+        List<Color> colors=map(appleList, new GenericFunction<Apple, Color>() {
+            @Override
+            public Color apply(Apple apple) {
+                return apple.getColor();
+            }
+        });
+        
+        List<AppleInfo> appleInfos=map(appleList,a -> new AppleInfo(a.getColor(),a.getWeight()));
+        System.out.println("appleInfos = " + appleInfos);
+
+
+        //전체 사과색 변경
+        List<Apple> yellows = map(appleList,a->{a.setColor(YELLOW);
+                    return a;
+        });
+        for(Apple yellow : yellows){
+            System.out.println(yellow);
+        }
     }
+    //사과에서 필요한 데이터 몇개만 추출
+    @Getter @NoArgsConstructor @ToString @AllArgsConstructor
+    public static class AppleInfo{
+        private Color color;
+        private int weight;
+    }
+
+
 }

@@ -3,6 +3,8 @@ package org.example.java8.lambda;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.example.java8.lambda.Color.RED;
+
 public class FilteringApple {
 
     /**
@@ -66,4 +68,21 @@ public class FilteringApple {
         }
         return result;
     }
+
+
+    /**
+     * 리스트와 변경조건을 전달하면 리스트 내부의 값을 변경 조건에 따라
+     * 변환한 뒤 반환하는 map  이라ㅡ는 메서드 구현
+     * map(appleList,apple->apple.setColor(Red))
+     */
+
+    public static <T, R> List<R> map(List<T> list, GenericFunction<T, R> mapper) {
+        List<R> result = new ArrayList<>();
+        for (T t : list) {
+            R r = mapper.apply(t);
+            result.add(r);
+        }
+        return result;
+    }
+
 }
