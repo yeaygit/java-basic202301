@@ -39,7 +39,31 @@ public class FilteringApple {
 
     /**
      * @solution -  try 3 : 동작을 파라미터화 한다. - 추상적 조건으로 필터링
+     * @problem
+     * - 과일이 아니면...?
      */
+    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p){
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : inventory) { //iter + enter
+            if(p.test(apple)){
+                result.add(apple);
+            }
+        }
+        return result;
+    }
+    //람다는 인터페이스의 추상메소드가 꼭 하나여야만 사용이 가능하다.
 
 
+    /**
+     * @solution - try 4: 제네릭 필터 메서드 생성
+     */
+    public static <T> List<T> filter(List<T> inventory, GenericPredicate<T> p){
+        List<T> result = new ArrayList<>();
+        for (T t : inventory) { //iter + enter
+            if(p.test(t)){
+                result.add(t);
+            }
+        }
+        return result;
+    }
 }
