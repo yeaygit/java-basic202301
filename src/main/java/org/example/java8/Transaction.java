@@ -1,12 +1,15 @@
-package org.example.java8.stream.practice;
+package org.example.java8;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.example.java8.stream.practice.Trader;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.lang.System.out;
 import static java.util.Comparator.*;
@@ -73,6 +76,34 @@ public class Transaction {
                 .sorted() //정렬리스트 대상이 String이나 숫자타입이면 Comparator을 안써도 정렬
                 .collect(Collectors.toList());
         out.println("trader name " + traderAllList);
+
+
+        // 연습 5: Milan에 거주하는 거래자가 한명이라도 있는지 여부 확인?
+        boolean milan = transactions.stream()
+                .anyMatch(transaction -> Objects.equals(transaction.getTrader().getCity(), "Milan"));
+        out.println("milan = " + milan);
+
+
+        // 연습 6: Cambridge에 사는 거래자의 모든 거래액의 총합 출력.
+        int cambridge = transactions.stream()
+                .filter(transaction -> Objects.equals(transaction.getTrader().getCity(), "Cambridge"))
+                .mapToInt(transaction -> transaction.getValue())
+                .sum();
+        out.println("cambridge = " + cambridge);
+
+        // 연습 7: 모든 거래에서 최고거래액은 얼마인가?
+        int maxValue = transactions.stream()
+                .mapToInt(transaction->transaction.getValue())
+                .max()
+                .getAsInt();
+         //.max(comparing(transaction -> transaction.getValue()));
+        out.println("maxValue = " + maxValue);
+
+        //연습 8: 가장 ㄱ작은 거래액을 가진 거래 정보 탐색
+        Optional<Transaction> smallestTransaction = transactions.stream()
+                .min(comparing(Transaction::getValue));
+        smallestTransaction.ifPresent(out::println);
+
     }
 }
 

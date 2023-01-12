@@ -1,5 +1,6 @@
 package org.example.java8.stream;
 
+
 import static org.example.java8.stream.Dish.*;
 
 public class Finding {
@@ -23,6 +24,7 @@ public class Finding {
         boolean flag3 = menu.stream()
                 .allMatch(dish -> dish.getCalories() < 1000);
         System.out.println("flag3 = " + flag3);
+
 
 
     }
